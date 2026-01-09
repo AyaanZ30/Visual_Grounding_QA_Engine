@@ -2,21 +2,28 @@ import torch
 from PIL import Image
 import matplotlib.pyplot as plt
 
-from models.DINO import GroundingDINO   
+from models.DINO import GroundingDINO  
+from models.BLIP import BLIPVisualReasoning 
 from utils.visualize import draw_boxes
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 def main():
-    # image_path =  "QA_sys.png"
     image_path =  "/kaggle/input/abc/pytorch/default/1/QA_sys.png"
     image = Image.open(image_path).convert("RGB")
     
-    text_labels = [["diagram", "box"]]
+    # text_labels = [["diagram", "box"]]
+    question = "What is the man holding in this image?"
     
-    model = GroundingDINO(device = DEVICE)
+    vqa_model = BLIPVisualReasoning(device = DEVICE, use_fp16 = True)
     
-    boxes, scores, labels = model.detect(image, text_labels)
+    grounding_model = GroundingDINO(device = DEVICE)
+    
+    answer = vqa_model.answer(image, question)
+    print("Answer : ",answer)
+    
+    # boxes, scores, labels = grounding_model.detect(image, text_labels)
+    boxes, scores, labels = grounding_model.detect(image, answer)
     print("Detected labels : ",labels)
     print("Detection scores : ",scores)
     
