@@ -25,7 +25,7 @@ def main():
     plt.imshow(output)
     plt.axis("off")
     
-    plt.savefig("output.png")
+    plt.savefig("/kaggle/working/output.png")
     print("Saved output.png")
     
     plt.show()
