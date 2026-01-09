@@ -8,7 +8,8 @@ from utils.visualize import draw_boxes
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 def main():
-    image_path =  "QA_sys.png"
+    # image_path =  "QA_sys.png"
+    image_path =  "/kaggle/input/abc/pytorch/default/1/QA_sys.png"
     image = Image.open(image_path).convert("RGB")
     
     text_labels = [["diagram", "box"]]
