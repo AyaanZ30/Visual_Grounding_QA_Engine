@@ -1,0 +1,32 @@
+STEPS-OPT 1:
+
+-> Create a notebook on kaggle / select any existing notebook on kaggle (comment out all the code if latter)
+
+-> Upload the github repo on kaggle (Upload -> New Model -> Link -> {your_repo_url}) (not the .git)
+
+-> In a new cell, paste the script:
+
+    """
+    import os
+
+    repo_path = "/kaggle/input/xyz/pytorch/default/1"   [xyz : wtv you have named, pytorch : wtv you have selected]
+
+    !PYTHONPATH={repo_path} python {repo_path}/inference/run.py
+    
+    """
+
+
+STEPS-OPT 2:
+
+-> !git clone https://github.com/<your-username>/<your-repo>.git
+
+-> %cd visual-grounding-qa
+
+-> !pip install -r requirements.txt [if necessary]
+
+-> import torch
+    print(torch.cuda.is_available())
+    print(torch.cuda.get_device_name(0))
+
+-> !python inference/run.py
+

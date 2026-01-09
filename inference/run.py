@@ -24,6 +24,10 @@ def main():
     plt.figure(figsize=(8, 8))
     plt.imshow(output)
     plt.axis("off")
+    
+    plt.savefig("output.png")
+    print("Saved output.png")
+    
     plt.show()
 
 if __name__ == "__main__":
