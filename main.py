@@ -1,6 +1,2 @@
-def main():
-    print("Hello from visual-grouding-qa-engine!")
+import torch
 
-
-if __name__ == "__main__":
-    main()
