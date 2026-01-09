@@ -9,10 +9,10 @@ from utils.visualize import draw_boxes
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 def main():
-    image_path =  "/kaggle/input/abc/pytorch/default/1/QA_sys.png"
+    image_path =  "/kaggle/input/abc/pytorch/default/1/man_cat.jpg"
     image = Image.open(image_path).convert("RGB")
     
-    # text_labels = [["diagram", "box"]]
+    text_labels = [["cat", "man"]]
     question = "What is the man holding in this image?"
     
     vqa_model = BLIPVisualReasoning(device = DEVICE, use_fp16 = True)
@@ -22,8 +22,8 @@ def main():
     answer = vqa_model.answer(image, question)
     print("Answer : ",answer)
     
-    # boxes, scores, labels = grounding_model.detect(image, text_labels)
-    boxes, scores, labels = grounding_model.detect(image, answer)
+    boxes, scores, labels = grounding_model.detect(image, text_labels)
+    # boxes, scores, labels = grounding_model.detect(image, answer)
     print("Detected labels : ",labels)
     print("Detection scores : ",scores)
     
