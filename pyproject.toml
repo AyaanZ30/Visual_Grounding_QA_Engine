@@ -3,10 +3,14 @@ name = "visual-grouding-qa-engine"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
+    "google>=3.0.0",
+    "google-genai>=1.57.0",
+    "google-generativeai>=0.8.6",
     "numpy",
     "opencv-python>=4.12.0.88",
-    "pytorch",
+    "pillow>=12.1.0",
+    "torch>=2.9.1",
     "transformers",
 ]
