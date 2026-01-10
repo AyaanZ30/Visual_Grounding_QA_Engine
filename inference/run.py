@@ -23,9 +23,9 @@ def main():
     answer = vqa_model.answer(image, question)
     print("Answer : ",answer)
     
-    entities = text_labels = extract_entities(answer)
+    entities =extract_entities(answer)
     
-    boxes, scores, labels = grounding_model.detect(image, [entities])
+    boxes, scores, labels = grounding_model.detect(image, [[entities]])
     # boxes, scores, labels = grounding_model.detect(image, answer)
     print("Detected labels : ",labels)
     print("Detection scores : ",scores)
