@@ -1,13 +1,17 @@
 # extract_entities({BLIP_output}) -> [entity_1, ..]
 # extract_entities("An umbrella") -> ["umbrella"](a text obj) -> DINO() -> BB (around umbrella)
+import os
 from google import genai
 from pydantic import BaseModel
 from typing import List 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class EntityList(BaseModel):
     entities : List[str]
 
-client = genai.Client(api_key = "AIzaSyCmFHIxMW-KtQ8xRQ8LmOlV3zwFUs8Qs0I")
+client = genai.Client(api_key = os.getenv("GEMINI_API_KEY"))
 
 def extract_entities(text : str) -> List[str]:
     if not text:
